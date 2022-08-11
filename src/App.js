@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import MainLayout from "./layout/MainLayout";
-import One from "./components/One";
-import Two from "./components/Two";
+import { renderComponent } from "./components/renderComponent";
+import { Two } from "./components/Two";
 import Three from "./components/Three";
 import Finally from "./components/Finally";
 import { config } from "./config";
+import { nameConfig } from "./nameConfig";
 import "./App.css";
 
 function App() {
@@ -15,9 +16,9 @@ function App() {
         {(() => {
           switch (step) {
             case 0:
-              return <One config={config} />;
+              return renderComponent(nameConfig);
             case 1:
-              return <Two />;
+              return Two(config);
             case 2:
               return <Three />;
             case 3:
