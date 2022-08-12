@@ -9,7 +9,7 @@ const SelectOption = ({ className, children }) => {
   };
 
   return (
-    <FormControl sx={{ width: "225px" }}>
+    <FormControl sx={{ width: "225px", m: "10px" }}>
       <InputLabel id="demo-simple-select-label">Age</InputLabel>
       <Select
         labelId="demo-simple-select-label"

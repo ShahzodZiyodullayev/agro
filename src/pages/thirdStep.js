@@ -1,6 +1,6 @@
 import { createElement } from "react";
-import { Input } from "./Input";
-import { Form } from "./Form";
+import { Input } from "../components/Input";
+import { Form } from "../components/Form";
 
 const keysToComponentMap = {
   form: Form,
@@ -15,11 +15,7 @@ const stylesMap = (styles) => {
   return mappedStyles;
 };
 
-export const renderComponent = (config) => {
-  let name = document.querySelector(".flex-shrink-0");
-
-  console.dir(name);
-
+export const thirdStep = (config) => {
   if (typeof keysToComponentMap[config.component] !== "undefined") {
     return createElement(
       keysToComponentMap[config.component],
@@ -33,7 +29,7 @@ export const renderComponent = (config) => {
       config.children &&
         (typeof config.children === "string"
           ? config.children
-          : config.children.map((c) => renderComponent(c))),
+          : config.children.map((c) => thirdStep(c))),
     );
   }
 };

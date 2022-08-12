@@ -1,8 +1,10 @@
 import { createElement } from "react";
-import SelectOption from "./SelectOption";
+import SelectOption from "../components/SelectOption";
+import { Form } from "../components/Form";
 
 const keysToComponentMap = {
   select: SelectOption,
+  form: Form,
 };
 
 const stylesMap = (styles) => {
@@ -13,7 +15,7 @@ const stylesMap = (styles) => {
   return mappedStyles;
 };
 
-export const Two = (config) => {
+export const secondStep = (config) => {
   if (typeof keysToComponentMap[config.component] !== "undefined") {
     return (
       <div className="center height">
@@ -28,7 +30,7 @@ export const Two = (config) => {
           config.children &&
             (typeof config.children === "string"
               ? config.children
-              : config.children.map((c) => Two(c))),
+              : config.children.map((c) => secondStep(c))),
         )}
       </div>
     );

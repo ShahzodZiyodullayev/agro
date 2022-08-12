@@ -9,6 +9,7 @@ function ButtonContainer({ setStep }) {
         <Button
           variant="contained"
           onClick={() => setStep((prev) => (prev > 0 ? prev - 1 : 0))}
+          sx={{ height: "56px", width: "150px" }}
         >
           Prev
         </Button>
@@ -17,6 +18,7 @@ function ButtonContainer({ setStep }) {
         <Button
           variant="contained"
           onClick={() => setStep((prev) => (prev < 3 ? prev + 1 : 3))}
+          sx={{ height: "56px", width: "150px" }}
         >
           Next
         </Button>
