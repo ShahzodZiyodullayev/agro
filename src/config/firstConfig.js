@@ -3,26 +3,54 @@ export const firstConfig = {
   className: "name-and-lastname",
   children: [
     {
-      id: 1,
-      component: "input",
-      className: "name",
-      type: "text",
-      label: "Name",
-    },
-    {
-      id: 2,
-      component: "input",
-      className: "lastname",
-      type: "text",
-      label: "Lastname",
-    },
-    {
-      id: 3,
-      component: "input",
-      className: "submitBtn",
-      type: "submit",
-      onClick: true,
-      children: "Next",
+      component: "div",
+      className: "formContainer",
+      children: [
+        {
+          component: "div",
+          className: "inputContainer",
+          children: [
+            {
+              id: 1,
+              name: "name",
+              component: "input",
+              className: "name",
+              type: "text",
+              label: "Name",
+              onChange: true,
+            },
+            {
+              id: 2,
+              name: "lastname",
+              component: "input",
+              className: "lastname",
+              type: "text",
+              label: "Lastname",
+              onChange: true,
+            },
+          ],
+        },
+        {
+          component: "div",
+          className: "buttonContainer",
+          children: [
+            {
+              id: 3,
+              component: "button",
+              className: "leftButton",
+              onClick: true,
+              children: "Prev",
+            },
+            {
+              id: 4,
+              component: "button",
+              className: "rightButton",
+              onClick: true,
+              children: "Next",
+            },
+          ],
+        },
+      ],
     },
   ],
 };

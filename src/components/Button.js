@@ -1,9 +1,21 @@
-import { Button as Btn } from "@mui/material";
+import { Button } from "@mui/material";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-export const Button = ({ className, style, id, children }) => {
+export const SubmitButton = ({ className, style, id, onClick, disabled }) => {
   return (
-    <Btn variant="contained" id={id} className={className} style={style}>
-      {children}
-    </Btn>
+    <Button
+      disabled={disabled}
+      id={id}
+      className={className}
+      style={style}
+      onClick={onClick}
+    >
+      {className === "leftButton" ? (
+        <ArrowBackIosIcon />
+      ) : (
+        <ArrowForwardIosIcon />
+      )}
+    </Button>
   );
 };
