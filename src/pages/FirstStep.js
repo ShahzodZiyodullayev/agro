@@ -26,7 +26,7 @@ function FirstStep(props) {
   };
 
   const rightClick = (e) => {
-    submit();
+    submit(name, lastname);
     props.setStep((prev) => (prev >= 3 ? prev : prev + 1));
   };
 

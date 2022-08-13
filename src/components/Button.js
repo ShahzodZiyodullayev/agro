@@ -2,7 +2,13 @@ import { Button } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-export const SubmitButton = ({ className, style, id, onClick, disabled }) => {
+export const SubmitButton = ({
+  className,
+  style,
+  id,
+  onClick,
+  disabled,
+}) => {
   return (
     <Button
       disabled={disabled}

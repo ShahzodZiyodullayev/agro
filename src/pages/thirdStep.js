@@ -51,7 +51,7 @@ function ThirdStep(props) {
         keysToComponentMap[config.component],
         {
           type: config.type ? config.type : null,
-          key: config.id,
+          key: config.id ? config.id : null,
           className: config.className ? config.className : null,
           style: config.styles ? stylesMap(config.styles) : null,
           type: config.type ? config.type : null,

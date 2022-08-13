@@ -8,10 +8,10 @@ const SelectOption = ({
   districts,
   age,
   age2,
-  handleChange,
-  handleChange2,
-  selectCity,
-  selectDistrict,
+  handlechange,
+  handlechange2,
+  selectcity,
+  selectdistrict,
 }) => {
   return (
     <>
@@ -27,12 +27,13 @@ const SelectOption = ({
             id="demo-simple-select"
             value={age}
             label="Age"
-            onChange={handleChange}
+            key={key}
+            onChange={handlechange}
           >
             {city &&
               city.length > 0 &&
               city.map((reg, ind) => (
-                <MenuItem key={reg._id} value={reg._id} onClick={selectCity}>
+                <MenuItem key={reg._id} value={reg._id} onClick={selectcity}>
                   {reg.region}
                 </MenuItem>
               ))}
@@ -51,14 +52,15 @@ const SelectOption = ({
             id="demo-simple-select"
             value={age2}
             label="District"
-            onChange={handleChange2}
+            key={key}
+            onChange={handlechange2}
           >
             {districts && districts.length > 0 ? (
               districts.map((reg, ind) => (
                 <MenuItem
                   key={reg._id}
                   value={reg._id}
-                  onClick={selectDistrict}
+                  onClick={selectdistrict}
                 >
                   {reg.district}
                 </MenuItem>

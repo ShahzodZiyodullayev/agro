@@ -1,4 +1,5 @@
 export const secondConfig = {
+  id: 7,
   component: "form",
   className: "name-and-lastname",
   children: [
@@ -7,6 +8,7 @@ export const secondConfig = {
       className: "formContainer",
       children: [
         {
+          id: 1,
           component: "div",
           className: "inputContainer",
           children: [
@@ -25,18 +27,19 @@ export const secondConfig = {
           ],
         },
         {
+          id: 4,
           component: "div",
           className: "buttonContainer",
           children: [
             {
-              id: 3,
+              id: 5,
               component: "button",
               className: "leftButton",
               onClick: true,
               children: "Prev",
             },
             {
-              id: 4,
+              id: 6,
               component: "button",
               className: "rightButton",
               onClick: true,
@@ -47,26 +50,4 @@ export const secondConfig = {
       ],
     },
   ],
-  // children: [
-  //   {
-  //     id: 2,
-  //     component: "select",
-  //     className: "city-select",
-  //     onSelect: true,
-  //   },
-  //   {
-  //     id: 3,
-  //     component: "select",
-  //     className: "district-select",
-  //     onSelect: true,
-  //   },
-  //   {
-  //     id: 5,
-  //     component: "input",
-  //     className: "submitBtn",
-  //     type: "submit",
-  //     onClick: true,
-  //     children: "Next",
-  //   },
-  // ],
 };

@@ -7,11 +7,12 @@ export const thirdConfig = {
       className: "formContainer",
       children: [
         {
+          id: 1,
           component: "div",
           className: "inputContainer",
           children: [
             {
-              id: 1,
+              id: 2,
               name: "email",
               component: "input",
               className: "name",
@@ -20,7 +21,7 @@ export const thirdConfig = {
               onChange: true,
             },
             {
-              id: 2,
+              id: 3,
               name: "website",
               component: "input",
               className: "lastname",
@@ -31,18 +32,19 @@ export const thirdConfig = {
           ],
         },
         {
+          id: 4,
           component: "div",
           className: "buttonContainer",
           children: [
             {
-              id: 3,
+              id: 5,
               component: "button",
               className: "leftButton",
               onClick: true,
               children: "Prev",
             },
             {
-              id: 4,
+              id: 6,
               component: "button",
               className: "rightButton",
               onClick: true,
@@ -53,15 +55,4 @@ export const thirdConfig = {
       ],
     },
   ],
-  // children: [
-
-  //   {
-  //     id: 3,
-  //     component: "input",
-  //     className: "submitBtn",
-  //     type: "submit",
-  //     onClick: true,
-  //     children: "Finish",
-  //   },
-  // ],
 };

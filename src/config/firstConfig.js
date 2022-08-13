@@ -7,6 +7,7 @@ export const firstConfig = {
       className: "formContainer",
       children: [
         {
+          id: 1,
           component: "div",
           className: "inputContainer",
           children: [
@@ -31,6 +32,7 @@ export const firstConfig = {
           ],
         },
         {
+          id: 2,
           component: "div",
           className: "buttonContainer",
           children: [

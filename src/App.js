@@ -4,8 +4,6 @@ import FirstStep from "./pages/FirstStep";
 import SecondStep from "./pages/SecondStep";
 import ThirdStep from "./pages/ThirdStep";
 import Finally from "./pages/Finally";
-import { secondConfig } from "./config/secondConfig";
-import { thirdConfig } from "./config/thirdConfig";
 import "./App.css";
 
 function App() {
@@ -16,8 +14,6 @@ function App() {
       <MainLayout step={step}>
         {(() => {
           switch (step) {
-            // case 0:
-            //   return FirstStep(firstConfig);
             case 0:
               return <FirstStep setStep={setStep} />;
             case 1:

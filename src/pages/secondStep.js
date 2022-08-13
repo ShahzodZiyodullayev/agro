@@ -44,11 +44,11 @@ function SecondStep(props) {
     cityList();
   }, []);
 
-  const selectCity = (event) => {
+  const selectcity = (event) => {
     setSelectC(event.target.textContent);
   };
 
-  const selectDistrict = (event) => {
+  const selectdistrict = (event) => {
     setSelectD(event.target.textContent);
   };
 
@@ -83,14 +83,14 @@ function SecondStep(props) {
           {createElement(
             keysToComponentMap[config.component],
             {
-              type: config.type ? config.type : null,
               key: config.id ? config.id : null,
+              type: config.type ? config.type : null,
               city: config.id ? city : null,
               districts: config.id ? districts : null,
               age: config.id ? age : null,
               age2: config.id ? age2 : null,
-              handleChange: config.id ? handleChange : null,
-              handleChange2: config.id ? handleChange2 : null,
+              handlechange: config.id ? handleChange : null,
+              handlechange2: config.id ? handleChange2 : null,
               className: config.className ? config.className : null,
               style: config.styles ? stylesMap(config.styles) : null,
               value: config.value ? config.value : null,
@@ -105,8 +105,8 @@ function SecondStep(props) {
                   ? rightClick
                   : leftClick
                 : null,
-              selectCity,
-              selectDistrict,
+              selectcity,
+              selectdistrict,
             },
             config.children &&
               (typeof config.children === "string"
