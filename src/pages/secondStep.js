@@ -1,7 +1,7 @@
 import { createElement, useEffect, useState } from "react";
 import SelectOption from "../components/SelectOption";
 import { Form } from "../components/Form";
-import { secondConfig } from "../config/secondConfig";
+// import { secondConfig } from "../config/secondConfig";
 import axios from "axios";
 import { SubmitButton } from "../components/Button";
 
@@ -12,6 +12,17 @@ function SecondStep(props) {
   const [age2, setAge2] = useState("");
   const [selectC, setSelectC] = useState("");
   const [selectD, setSelectD] = useState("");
+  const [secondConfig, setSecondConfig] = useState({});
+
+  const getFrontEnd = async () => {
+    await axios
+      .get("http://localhost:2000/api/step/second")
+      .then((d) => setSecondConfig(d.data.data[0].value));
+  };
+
+  useEffect(() => {
+    getFrontEnd();
+  }, []);
 
   const submit = async () => {
     await axios.post("http://localhost:2000/api/users/add", {
@@ -77,44 +88,52 @@ function SecondStep(props) {
   };
 
   let second = (config) => {
-    if (typeof keysToComponentMap[config.component] !== "undefined") {
-      return (
-        <div className="center height">
-          {createElement(
-            keysToComponentMap[config.component],
-            {
-              key: config.id ? config.id : null,
-              type: config.type ? config.type : null,
-              city: config.id ? city : null,
-              districts: config.id ? districts : null,
-              age: config.id ? age : null,
-              age2: config.id ? age2 : null,
-              handlechange: config.id ? handleChange : null,
-              handlechange2: config.id ? handleChange2 : null,
-              className: config.className ? config.className : null,
-              style: config.styles ? stylesMap(config.styles) : null,
-              value: config.value ? config.value : null,
-              disabled:
-                config.className === "rightButton"
-                  ? selectC === "" || selectD === ""
-                    ? true
-                    : false
+    if (secondConfig) {
+      if (typeof keysToComponentMap[config.component] !== "undefined") {
+        return (
+          <div className="center height">
+            {createElement(
+              keysToComponentMap[config.component],
+              {
+                key: config.id ? config.id : null,
+                type: config.type ? config.type : null,
+                city: config.id ? city : null,
+                districts: config.id ? districts : null,
+                age: config.id ? age : null,
+                age2: config.id ? age2 : null,
+                handlechange: config.id ? handleChange : null,
+                handlechange2: config.id ? handleChange2 : null,
+                className: config.className ? config.className : null,
+                style: config.styles ? stylesMap(config.styles) : null,
+                value: config.value ? config.value : null,
+                disabled:
+                  config.className === "rightButton"
+                    ? selectC === "" || selectD === ""
+                      ? true
+                      : false
+                    : null,
+                onClick: config.onClick
+                  ? config.className === "rightButton"
+                    ? rightClick
+                    : leftClick
                   : null,
-              onClick: config.onClick
-                ? config.className === "rightButton"
-                  ? rightClick
-                  : leftClick
-                : null,
-              selectcity,
-              selectdistrict,
-            },
-            config.children &&
-              (typeof config.children === "string"
-                ? config.children
-                : config.children.map((c) => second(c))),
-          )}
-        </div>
-      );
+                selectcity,
+                selectdistrict,
+              },
+              config.children &&
+                (typeof config.children === "string"
+                  ? config.children
+                  : config.children.map((c) => second(c))),
+            )}
+          </div>
+        );
+      } else {
+        return createElement(
+          "h2",
+          { className: "serverNotWorking" },
+          "Serverni ishga tushiring!",
+        );
+      }
     }
   };
   return <>{second(secondConfig)}</>;

@@ -1,15 +1,24 @@
-import { createElement, useState } from "react";
+import { createElement, useState, useEffect } from "react";
 import { Input } from "../components/Input";
 import { Form } from "../components/Form";
 import { SubmitButton } from "../components/Button";
-import { firstConfig } from "./../config/firstConfig";
+// import { firstConfig } from "./../config/firstConfig";
 import axios from "axios";
 
 function FirstStep(props) {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
+  const [firstConfig, setFirstConfig] = useState("");
 
-  console.log(name, lastname);
+  const getFrontEnd = async () => {
+    await axios
+      .get("http://localhost:2000/api/step/first")
+      .then((d) => setFirstConfig(d.data.data[0].value));
+  };
+
+  useEffect(() => {
+    getFrontEnd();
+  }, []);
 
   const keysToComponentMap = {
     form: Form,
@@ -48,33 +57,41 @@ function FirstStep(props) {
   };
 
   let first = (config) => {
-    if (typeof keysToComponentMap[config.component] !== "undefined") {
-      return createElement(
-        keysToComponentMap[config.component],
-        {
-          key: config.id ? config.id : null,
-          className: config.className ? config.className : null,
-          style: config.styles ? stylesMap(config.styles) : null,
-          type: config.type ? config.type : null,
-          label: config.label ? config.label : null,
-          name: config.name ? config.name : null,
-          disabled:
-            config.className === "rightButton"
-              ? name === "" || lastname === ""
-                ? true
-                : false
+    if (firstConfig) {
+      if (typeof keysToComponentMap[config.component] !== "undefined") {
+        return createElement(
+          keysToComponentMap[config.component],
+          {
+            key: config.id ? config.id : null,
+            className: config.className ? config.className : null,
+            style: config.styles ? stylesMap(config.styles) : null,
+            type: config.type ? config.type : null,
+            label: config.label ? config.label : null,
+            name: config.name ? config.name : null,
+            disabled:
+              config.className === "rightButton"
+                ? name === "" || lastname === ""
+                  ? true
+                  : false
+                : null,
+            onClick: config.onClick
+              ? config.className === "rightButton"
+                ? rightClick
+                : leftClick
               : null,
-          onClick: config.onClick
-            ? config.className === "rightButton"
-              ? rightClick
-              : leftClick
-            : null,
-          onChange: config.onChange ? onChangeButton : null,
-        },
-        config.children &&
-          (typeof config.children === "string"
-            ? config.children
-            : config.children.map((c) => first(c))),
+            onChange: config.onChange ? onChangeButton : null,
+          },
+          config.children &&
+            (typeof config.children === "string"
+              ? config.children
+              : config.children.map((c) => first(c))),
+        );
+      }
+    } else {
+      return createElement(
+        "h2",
+        { className: "serverNotWorking" },
+        "Serverni ishga tushiring!",
       );
     }
   };

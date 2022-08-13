@@ -79,3 +79,6 @@
   display: flex;
   flex-direction: row;
 }
+.serverNotWorking{
+  text-align: center;
+}
